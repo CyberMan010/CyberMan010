@@ -1,6 +1,9 @@
-<h2 align="left">Hi 👋! My name is Mohamad Hasoun and I'm a Full Stack Developer, from Syria / Jordan</h2>
+# Hello World!, I'm Mohamad Hasoun, a Syrian Web Developer 👋🏼:
+🛜 currently working on my own [Portfilio](https://ramadanportf.netlify.app/)<br>👨🏼‍🎓 studying Solo Software Engineering<br>👨🏼‍💻 working as a web developer since 2024 <br>🎬 just started out with my youtube channel <i>Dev Dive</i>
 
-###
+
+
+# 💻 Tech Stack:
 
 <div align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="30" alt="javascript logo"  />
@@ -58,7 +61,7 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-line-wordmark.svg" height="30" alt="amazonwebservices logo"  />
 </div>
 
-###
+# Reach me out on:
 
 <div align="left">
   <img src="https://img.shields.io/static/v1?message=Youtube&logo=youtube&label=&color=FF0000&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="https://www.youtube.com/@Dev-Dive01"  />
