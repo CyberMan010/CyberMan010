@@ -1,7 +1,7 @@
 <img src="youtube_logo.png" alt="GitHub Banner" width="100%" />
 
 # Hello World!, I'm Mohamad Hasoun, a Syrian Web Developer 👋🏼:
-🛜 currently working on my own [Portfilio](https://ramadanportf.netlify.app/)<br>👨🏼‍🎓 studying Solo Software Engineering<br>👨🏼‍💻 working as a web developer since 2024 <br>🎬 just started out with my youtube channel <i>Dev Dive</i>
+🛜 currently working on my own [Portfilio](https://ramadanportf.netlify.app/)<br>👨🏼‍🎓 Software Engineering Student<br>👨🏼‍💻 working as a web developer <br>🎬 just started out with my youtube channel <i alt="https://www.youtube.com/@Dev-Dive01">Dev Dive</i>
 
 
 
