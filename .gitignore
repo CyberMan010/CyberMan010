@@ -1,0 +1,7 @@
+# Local preview renders (regenerate with: python generate_card.py)
+preview_*.png
+
+# Python
+__pycache__/
+*.pyc
+.venv/
