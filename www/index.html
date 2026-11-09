@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>StoryCraft - 10-Minute Daily Storytelling Master</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top App Bar -->
+    <header class="top-bar">
+      <div class="brand-section">
+        <div class="brand-icon">🎙️</div>
+        <div>
+          <h1 class="brand-title">StoryCraft</h1>
+          <p style="font-size:0.7rem; color:var(--text-muted); font-weight:700; margin-top:-2px;">10-MIN DAILY STORYTELLER</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <div class="streak-pill" title="Daily Streak">
+          <span>🔥</span>
+          <span id="streak-count-top">0</span>
+        </div>
+        <button id="theme-toggle-btn" class="icon-btn" title="Toggle Theme">🌙</button>
+      </div>
+    </header>
+
+    <!-- ============================================== -->
+    <!-- TAB 1: TODAY (10-MINUTE GUIDED DAILY SESSION) -->
+    <!-- ============================================== -->
+    <main id="tab-today" class="tab-view active">
+      <!-- Daily Hero Banner -->
+      <section class="daily-hero-card">
+        <div class="daily-hero-badge" id="today-day-badge">Day 1 of 30 • Week 1</div>
+        <h2 class="daily-hero-title" id="today-title">The 3-Beat Golden Spine: Hook, Struggle, Landing</h2>
+        <p class="daily-hero-subtitle" id="today-subtitle">Never begin with "Let me tell you about..."—start directly in the action.</p>
+
+        <!-- 10-Minute Session Clock Widget -->
+        <div class="timer-widget">
+          <div class="timer-display">
+            <span class="timer-clock" id="timer-clock">10:00</span>
+            <span class="timer-label">Session Clock</span>
+          </div>
+          <div class="timer-controls">
+            <button id="btn-timer-toggle" class="btn-timer">▶ Start 10m</button>
+            <button id="btn-timer-reset" class="btn btn-secondary" style="padding:6px 12px; font-size:0.8rem; border-radius:var(--radius-full);">↺</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4-Phase Stepper Navigation -->
+      <nav class="stepper-nav">
+        <div class="step-item active" data-phase="1">
+          <span class="step-num">Min 0-2</span>
+          <span class="step-label">1. Spark</span>
+        </div>
+        <div class="step-item" data-phase="2">
+          <span class="step-num">Min 2-5</span>
+          <span class="step-label">2. Anatomy</span>
+        </div>
+        <div class="step-item" data-phase="3">
+          <span class="step-num">Min 5-8</span>
+          <span class="step-label">3. Guided</span>
+        </div>
+        <div class="step-item" data-phase="4">
+          <span class="step-num">Min 8-10</span>
+          <span class="step-label">4. Voice</span>
+        </div>
+      </nav>
+
+      <!-- PHASE 1: CONCEPT & SPARK -->
+      <section class="phase-panel active" data-phase="1">
+        <div class="phase-header">
+          <h3 class="phase-title">Phase 1: Structure Concept & Spark</h3>
+          <span class="phase-time">⏱️ 2 Mins</span>
+        </div>
+        <div class="callout callout-spark">
+          <strong>The Core Problem:</strong>
+          <p id="concept-spark" style="margin-top:6px;"></p>
+        </div>
+        <div class="callout callout-rule">
+          <strong>The Structural Rule:</strong>
+          <p id="concept-rule" style="margin-top:6px; white-space:pre-line;"></p>
+        </div>
+        <p id="concept-mindset" style="font-size:0.88rem; font-style:italic; color:var(--text-muted); margin-bottom:16px;"></p>
+        <button id="btn-phase-1-next" class="btn btn-primary btn-block">Next: Study Real Anatomy →</button>
+      </section>
+
+      <!-- PHASE 2: ANATOMY (BAD VS GOOD) -->
+      <section class="phase-panel" data-phase="2">
+        <div class="phase-header">
+          <h3 class="phase-title">Phase 2: Anatomy & Contrast</h3>
+          <span class="phase-time">⏱️ 3 Mins</span>
+        </div>
+        <div class="callout callout-bad">
+          <strong id="bad-example-title" style="color:var(--danger);">❌ How People Ramble:</strong>
+          <p id="bad-example-text" style="margin-top:6px;"></p>
+        </div>
+        <div class="callout callout-rule">
+          <strong id="good-example-title" style="color:var(--success);">✅ The Structured Delivery:</strong>
+          <p id="good-example-text" style="margin-top:6px; white-space:pre-line;"></p>
+        </div>
+        <button id="btn-phase-2-next" class="btn btn-primary btn-block">Next: Write Your Story →</button>
+      </section>
+
+      <!-- PHASE 3: GUIDED INTERACTIVE SCAFFOLD -->
+      <section class="phase-panel" data-phase="3">
+        <div class="phase-header">
+          <h3 class="phase-title">Phase 3: Interactive Story Scaffold</h3>
+          <span class="phase-time">⏱️ 3 Mins</span>
+        </div>
+        <p id="scaffold-prompt-title" style="font-weight:700; margin-bottom:14px; font-size:0.95rem;"></p>
+        <div id="scaffold-fields-container">
+          <!-- Dynamic field inputs rendered by JavaScript -->
+        </div>
+        <button id="btn-phase-3-next" class="btn btn-primary btn-block">Next: Voice Run & Teleprompter →</button>
+      </section>
+
+      <!-- PHASE 4: SPOKEN RUN & ARENA -->
+      <section class="phase-panel" data-phase="4">
+        <div class="phase-header">
+          <h3 class="phase-title">Phase 4: Spoken Arena & Self-Review</h3>
+          <span class="phase-time">⏱️ 2 Mins</span>
+        </div>
+        <p id="voice-prompt-text" style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:12px;"></p>
+
+        <!-- Prompter Cue Sheet -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <span style="font-size:0.8rem; font-weight:700; color:var(--accent-light);">📜 YOUR STORY TELEPROMPTER</span>
+          <span style="font-size:0.75rem; color:var(--text-muted);"><span id="prompter-word-count">0 words</span> • <span id="prompter-est-time">~0s</span></span>
+        </div>
+        <div id="voice-prompter-text" class="prompter-box"></div>
+
+        <!-- Built-in Voice Recorder -->
+        <div class="recorder-box">
+          <button id="btn-mic-toggle" class="rec-btn-circle" title="Tap to Record Voice">🎙️</button>
+          <div id="rec-time-display" class="rec-timer">00:00</div>
+          <p id="rec-status-text" class="rec-status">Tap to start voice practice</p>
+          <div id="audio-preview-container" class="audio-preview-container"></div>
+        </div>
+
+        <!-- Self-Evaluation Scorecard -->
+        <div class="card" style="margin-top:16px;">
+          <h4 style="font-size:0.95rem; font-weight:800; margin-bottom:12px;">📊 Rapid Self-Check Scorecard</h4>
+          <div class="rubric-group">
+            <div class="rubric-label">
+              <span>1. Hook Clarity (Grabbed them in 10s?)</span>
+            </div>
+            <div class="star-rating" data-category="hook">
+              <button class="star-btn active" data-score="1">★</button>
+              <button class="star-btn active" data-score="2">★</button>
+              <button class="star-btn active" data-score="3">★</button>
+              <button class="star-btn active" data-score="4">★</button>
+              <button class="star-btn" data-score="5">★</button>
+            </div>
+          </div>
+          <div class="rubric-group">
+            <div class="rubric-label">
+              <span>2. Structural Arc (Clear pivot & struggle?)</span>
+            </div>
+            <div class="star-rating" data-category="structure">
+              <button class="star-btn active" data-score="1">★</button>
+              <button class="star-btn active" data-score="2">★</button>
+              <button class="star-btn active" data-score="3">★</button>
+              <button class="star-btn active" data-score="4">★</button>
+              <button class="star-btn" data-score="5">★</button>
+            </div>
+          </div>
+          <div class="rubric-group">
+            <div class="rubric-label">
+              <span>3. Conciseness (Zero filler words or detours?)</span>
+            </div>
+            <div class="star-rating" data-category="conciseness">
+              <button class="star-btn active" data-score="1">★</button>
+              <button class="star-btn active" data-score="2">★</button>
+              <button class="star-btn active" data-score="3">★</button>
+              <button class="star-btn active" data-score="4">★</button>
+              <button class="star-btn" data-score="5">★</button>
+            </div>
+          </div>
+          <div class="rubric-group">
+            <div class="rubric-label">
+              <span>4. Resonant Landing (No trailing off?)</span>
+            </div>
+            <div class="star-rating" data-category="landing">
+              <button class="star-btn active" data-score="1">★</button>
+              <button class="star-btn active" data-score="2">★</button>
+              <button class="star-btn active" data-score="3">★</button>
+              <button class="star-btn active" data-score="4">★</button>
+              <button class="star-btn" data-score="5">★</button>
+            </div>
+          </div>
+        </div>
+
+        <button id="btn-complete-day" class="btn btn-primary btn-block" style="margin-top:16px; padding:14px;">
+          🏆 Mark Day Complete & Save to Vault
+        </button>
+      </section>
+    </main>
+
+    <!-- ============================================== -->
+    <!-- TAB 2: 30-DAY CURRICULUM ROADMAP               -->
+    <!-- ============================================== -->
+    <main id="tab-path" class="tab-view">
+      <div class="card" style="margin-bottom:16px;">
+        <h2 style="font-size:1.3rem; font-weight:800; margin-bottom:4px;">30-Day Story Mastery Path</h2>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:12px;">From rambling speaker to magnetic, structured communicator in 10 minutes a day.</p>
+        <div style="background:var(--bg-input); height:10px; border-radius:var(--radius-full); overflow:hidden; margin-bottom:6px;">
+          <div id="path-progress-bar" style="background:var(--accent-gradient); width:0%; height:100%; transition:width 0.4s ease;"></div>
+        </div>
+        <p id="path-progress-text" style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">0 of 30 Days Completed (0%)</p>
+      </div>
+
+      <div id="path-weeks-container">
+        <!-- Week 1 - 4 dynamically rendered -->
+      </div>
+    </main>
+
+    <!-- ============================================== -->
+    <!-- TAB 3: STORY FRAMEWORKS LIBRARY               -->
+    <!-- ============================================== -->
+    <main id="tab-frameworks" class="tab-view">
+      <div style="margin-bottom:16px;">
+        <h2 style="font-size:1.3rem; font-weight:800; margin-bottom:4px;">Story Structure Playbook</h2>
+        <p style="font-size:0.85rem; color:var(--text-secondary);">The 8 mental models used by TED speakers, McKinsey leaders, and Hollywood writers.</p>
+      </div>
+      <div id="frameworks-grid" class="framework-grid">
+        <!-- 8 frameworks dynamically rendered -->
+      </div>
+    </main>
+
+    <!-- ============================================== -->
+    <!-- TAB 4: INTERACTIVE STORY BUILDER STUDIO        -->
+    <!-- ============================================== -->
+    <main id="tab-builder" class="tab-view">
+      <div class="card" style="margin-bottom:16px;">
+        <h2 style="font-size:1.3rem; font-weight:800; margin-bottom:4px;">Story Builder Studio</h2>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:14px;">Select any framework and craft a bulletproof spoken story beat-by-beat.</p>
+
+        <div class="input-group">
+          <label class="input-label">Select Framework Architecture:</label>
+          <select id="builder-fw-select" class="text-input" style="font-weight:700;"></select>
+          <p id="builder-fw-desc" style="font-size:0.8rem; color:var(--accent-light); margin-top:4px; font-weight:600;"></p>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label">Story Working Title:</label>
+          <input type="text" id="builder-story-title" class="text-input" placeholder="e.g. How We Survived the Cloud Migration">
+        </div>
+
+        <div class="input-group">
+          <label class="input-label">Target Audience / Category:</label>
+          <select id="builder-category-select" class="text-input">
+            <option value="Work & Presentation">🏢 Work & Presentation</option>
+            <option value="Social & Banter">☕ Social & Casual Banter</option>
+            <option value="Career & Pitch">🚀 Career, Interview & Pitch</option>
+            <option value="Lessons & Leadership">🌱 Lessons & Leadership</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Scaffold Beat Fields -->
+      <div id="builder-beats-container">
+        <!-- Injected dynamically per framework -->
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">Final Moral / Core Takeaway (1 Sentence):</label>
+        <input type="text" id="builder-takeaway-input" class="text-input" placeholder="e.g. Speed matters, but isolated failover channels matter more.">
+      </div>
+
+      <!-- Word count & speech metrics -->
+      <div class="card" style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; margin-bottom:16px;">
+        <span style="font-size:0.85rem; font-weight:700; color:var(--text-secondary);">Estimated Speaking Metrics:</span>
+        <div style="font-weight:800; color:var(--accent-light); font-size:0.9rem;">
+          <span id="builder-word-count">0 words</span> • <span id="builder-time-count">~0s</span>
+        </div>
+      </div>
+
+      <div class="btn-group" style="margin-bottom:24px;">
+        <button id="btn-builder-test-voice" class="btn btn-secondary" style="flex:1;">
+          🎙️ Test in Prompter
+        </button>
+        <button id="btn-builder-save-vault" class="btn btn-primary" style="flex:1;">
+          💾 Save to Story Vault
+        </button>
+      </div>
+    </main>
+
+    <!-- ============================================== -->
+    <!-- TAB 5: PERSONAL STORY VAULT                    -->
+    <!-- ============================================== -->
+    <main id="tab-vault" class="tab-view">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <div>
+          <h2 style="font-size:1.3rem; font-weight:800;">Personal Story Vault</h2>
+          <p style="font-size:0.85rem; color:var(--text-secondary);">Your offline bank of crafted stories ready for meetings and chats.</p>
+        </div>
+      </div>
+
+      <!-- Search & Filters -->
+      <div class="vault-search-box">
+        <input type="text" id="vault-search-input" class="text-input" placeholder="🔍 Search stories by keyword or beat...">
+      </div>
+
+      <div class="filter-chips">
+        <button class="chip-btn active" data-filter="all">All Stories</button>
+        <button class="chip-btn" data-filter="work">Work & Presentation</button>
+        <button class="chip-btn" data-filter="social">Social & Banter</button>
+        <button class="chip-btn" data-filter="career">Career & Pitch</button>
+        <button class="chip-btn" data-filter="lessons">Lessons</button>
+      </div>
+
+      <!-- Stories List -->
+      <div id="vault-stories-list">
+        <!-- Rendered dynamically -->
+      </div>
+    </main>
+
+    <!-- ============================================== -->
+    <!-- TAB 6: IMPROMPTU SPONTANEOUS GYM               -->
+    <!-- ============================================== -->
+    <main id="tab-gym" class="tab-view">
+      <div style="margin-bottom:16px;">
+        <h2 style="font-size:1.3rem; font-weight:800;">Impromptu Gym</h2>
+        <p style="font-size:0.85rem; color:var(--text-secondary);">Think fast on your feet. Practice structuring random stories under pressure.</p>
+      </div>
+
+      <div class="gym-card">
+        <div id="gym-prompt-category" class="gym-prompt-title">Category: WORKPLACE</div>
+        <p id="gym-prompt-body" class="gym-prompt-body">Tell a story about a critical project deadline you almost missed and how you adapted.</p>
+        <div id="gym-constraint-text" class="gym-constraint">⏱️ Constraint: Complete your story in under 75 seconds.</div>
+
+        <div style="margin:16px 0;">
+          <div id="gym-clock-display" style="font-size:2.8rem; font-weight:900; font-family:monospace; letter-spacing:2px; color:var(--text-primary);">00:00</div>
+          <p id="gym-timer-status" style="font-size:0.9rem; font-weight:700; color:var(--accent-light);">Ready for Spontaneous Workout</p>
+        </div>
+
+        <div style="display:flex; gap:10px; justify-content:center;">
+          <button id="btn-gym-shuffle" class="btn btn-secondary" style="padding:10px 18px;">
+            🎲 New Scenario
+          </button>
+          <button id="btn-gym-start" class="btn btn-primary" style="padding:10px 22px;">
+            🚀 Start 30s Prep
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4 style="font-size:0.95rem; font-weight:800; margin-bottom:8px;">💡 How to Win the Impromptu Gym:</h4>
+        <ul style="padding-left:18px; font-size:0.88rem; color:var(--text-secondary); line-height:1.6;">
+          <li><strong>During 30s Prep:</strong> Decide ONLY your Hook (Sentence 1) and your Landing (Final sentence). Don't script the middle.</li>
+          <li><strong>During 2m Speaking:</strong> Trust the ABT spine (Agreement, But, Therefore). Never apologize for pausing in silence.</li>
+          <li><strong>The Landing:</strong> Stop speaking immediately when you hit your takeaway. Avoid trailing off!</li>
+        </ul>
+      </div>
+    </main>
+
+    <!-- ============================================== -->
+    <!-- TAB 7: SETTINGS & STATS                       -->
+    <!-- ============================================== -->
+    <main id="tab-settings" class="tab-view">
+      <div class="card" style="margin-bottom:16px;">
+        <h2 style="font-size:1.3rem; font-weight:800; margin-bottom:14px;">Your Storytelling Stats</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div style="background:var(--bg-input); padding:14px; border-radius:var(--radius-sm); text-align:center;">
+            <span style="font-size:1.4rem; font-weight:800; color:var(--flame);" id="stat-streak">0 Days</span>
+            <p style="font-size:0.75rem; color:var(--text-muted); font-weight:700; text-transform:uppercase;">Current Streak</p>
+          </div>
+          <div style="background:var(--bg-input); padding:14px; border-radius:var(--radius-sm); text-align:center;">
+            <span style="font-size:1.4rem; font-weight:800; color:var(--accent-light);" id="stat-completed-days">0 / 30</span>
+            <p style="font-size:0.75rem; color:var(--text-muted); font-weight:700; text-transform:uppercase;">Curriculum Days</p>
+          </div>
+          <div style="background:var(--bg-input); padding:14px; border-radius:var(--radius-sm); text-align:center;">
+            <span style="font-size:1.4rem; font-weight:800; color:var(--success);" id="stat-total-mins">0 Mins</span>
+            <p style="font-size:0.75rem; color:var(--text-muted); font-weight:700; text-transform:uppercase;">Total Practice</p>
+          </div>
+          <div style="background:var(--bg-input); padding:14px; border-radius:var(--radius-sm); text-align:center;">
+            <span style="font-size:1.4rem; font-weight:800; color:#38bdf8;" id="stat-vault-count">3 Stories</span>
+            <p style="font-size:0.75rem; color:var(--text-muted); font-weight:700; text-transform:uppercase;">Vault Stories</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- App Preferences -->
+      <div class="card" style="margin-bottom:16px;">
+        <h3 style="font-size:1.05rem; font-weight:800; margin-bottom:14px;">Preferences & Audio</h3>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--border);">
+          <div>
+            <strong style="font-size:0.92rem;">Sound Effects & Bell Chimes</strong>
+            <p style="font-size:0.78rem; color:var(--text-muted);">Web Audio API chimes during timer intervals</p>
+          </div>
+          <input type="checkbox" id="settings-sound-toggle" checked style="width:20px; height:20px; accent-color:var(--accent);">
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0;">
+          <div>
+            <strong style="font-size:0.92rem;">100% Offline Mode</strong>
+            <p style="font-size:0.78rem; color:var(--text-muted);">All data & audio engines stored strictly on device</p>
+          </div>
+          <span style="color:var(--success); font-weight:800; font-size:0.85rem;">Active ✓</span>
+        </div>
+      </div>
+
+      <!-- Backup & Restore -->
+      <div class="card" style="margin-bottom:16px;">
+        <h3 style="font-size:1.05rem; font-weight:800; margin-bottom:14px;">Data Backup & Transfer</h3>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:14px;">Safely export all your saved stories, progress, and streak to a JSON file.</p>
+        <div style="display:flex; gap:10px;">
+          <button id="btn-export-data" class="btn btn-secondary" style="flex:1;">
+            📥 Export Backup
+          </button>
+          <button id="btn-import-data" class="btn btn-secondary" style="flex:1;">
+            📤 Restore Backup
+          </button>
+          <input type="file" id="import-file-input" accept=".json" style="display:none;">
+        </div>
+      </div>
+
+      <!-- Reset -->
+      <div class="card" style="border-color:rgba(239, 68, 68, 0.3);">
+        <h3 style="font-size:1.05rem; font-weight:800; color:var(--danger); margin-bottom:8px;">Reset Curriculum</h3>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:12px;">Reset your 30-day curriculum progress back to Day 1. Your story vault remains safe.</p>
+        <button id="btn-reset-data" class="btn btn-secondary" style="color:var(--danger); border-color:var(--danger);">
+          ⚠️ Reset Course Progress
+        </button>
+      </div>
+    </main>
+
+    <!-- ============================================== -->
+    <!-- BOTTOM NAVIGATION BAR                          -->
+    <!-- ============================================== -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-tab="today">
+        <span class="nav-icon">📅</span>
+        <span>Today</span>
+      </button>
+      <button class="nav-item" data-tab="path">
+        <span class="nav-icon">🗺️</span>
+        <span>30 Days</span>
+      </button>
+      <button class="nav-item" data-tab="frameworks">
+        <span class="nav-icon">⚡</span>
+        <span>Models</span>
+      </button>
+      <button class="nav-item" data-tab="builder">
+        <span class="nav-icon">✍️</span>
+        <span>Builder</span>
+      </button>
+      <button class="nav-item" data-tab="vault">
+        <span class="nav-icon">🗄️</span>
+        <span>Vault</span>
+      </button>
+      <button class="nav-item" data-tab="gym">
+        <span class="nav-icon">🎲</span>
+        <span>Gym</span>
+      </button>
+      <button class="nav-item" data-tab="settings">
+        <span class="nav-icon">⚙️</span>
+        <span>Stats</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL: CELEBRATION MODAL                       -->
+  <!-- ============================================== -->
+  <div id="celebrate-modal" class="modal-overlay">
+    <div class="modal-box celebrate-card">
+      <div class="celebrate-trophy">🏆</div>
+      <h3 style="font-size:1.5rem; font-weight:900; margin-bottom:6px;">Day <span id="celebrate-day-num">1</span> Completed!</h3>
+      <p style="color:var(--text-secondary); font-size:0.95rem; margin-bottom:16px;">
+        You invested 10 deliberate minutes into structuring your spoken voice today.
+      </p>
+      <div style="background:var(--bg-card); padding:12px; border-radius:var(--radius-sm); margin-bottom:20px;">
+        <span style="font-size:1.2rem; font-weight:800; color:var(--flame);">🔥 <span id="celebrate-streak-num">1</span> Day Streak!</span>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-top:2px;">Consistency beats talent. See you tomorrow for the next practice.</p>
+      </div>
+      <button id="btn-celebrate-continue" class="btn btn-primary btn-block" style="padding:12px;">
+        Continue Journey →
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL: STORY DETAIL VIEW                       -->
+  <!-- ============================================== -->
+  <div id="story-detail-modal" class="modal-overlay">
+    <div class="modal-box">
+      <button id="btn-close-story-modal" class="modal-close">✕</button>
+      <span id="modal-story-meta" class="meta-chip" style="margin-bottom:8px; display:inline-block;"></span>
+      <h3 id="modal-story-title" style="font-size:1.35rem; font-weight:800; margin-bottom:14px;"></h3>
+      <div id="modal-story-beats" style="margin-bottom:16px;"></div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL: TELEPROMPTER / VOICE PRACTICE           -->
+  <!-- ============================================== -->
+  <div id="prompter-modal" class="modal-overlay">
+    <div class="modal-box">
+      <button id="btn-close-prompter-modal" class="modal-close">✕</button>
+      <h3 id="prompter-modal-title" style="font-size:1.2rem; font-weight:800; margin-bottom:12px;">Teleprompter Cue</h3>
+      <div id="prompter-modal-content" class="prompter-box" style="max-height:360px; font-size:1.15rem; line-height:1.7;"></div>
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-top:10px;">
+        💡 Tip: Hold your head high, maintain eye contact, and pause after each beat tag.
+      </p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/frameworks.js"></script>
+  <script src="js/prompts.js"></script>
+  <script src="js/curriculum.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
